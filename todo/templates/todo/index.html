@@ -1,0 +1,114 @@
+{% extends 'todo/layout.html' %}
+
+{% block content %}
+
+<header style="background-image: url({{ url_for('static', path='/image/mine.jpg') }});">
+            <div class="menu">
+                <p><a href="">Главная</a></p>
+                <p><a href="">Написать статью</a></p>
+                <p><a href="">Новое на сайте</a></p>
+                <p><a href="">Контакты</a></p>
+                <p><a href="">Новости</a></p>
+                <button class="but">Войти</button>
+            </div>
+            <h1>Поднимаем <br>сервер в <br> Майнкрафт</h1>
+        </header>
+        <section class="autor">
+            <div>
+                <img class="autimg" src="{{avatar}}" alt="">
+                <p class="name">{{author}}</p>
+            </div>
+            <p class="opisanie">{{author_description}}</p>
+        </section>
+        <section class="cont">
+            <div class="articletxt">
+                {{text}}
+            </div>
+            <div class="contents">
+                <h3 class="conh3">Содержание</h3>
+                <ol class="conli">
+                    {% for chapter in chapters %}
+                    <li><a href="{{chapter[0]}}">{{chapter[1]}}</a></li>
+                    {% endfor %}
+<!--                    <li><a href="">Регистрация на хосте</a></li>-->
+<!--                    <li><a href="">Установка зависимостей</a></li>-->
+<!--                    <li><a href="">Развёртываем докер</a></li>-->
+<!--                    <li><a href="">Настройка</a></li>-->
+<!--                    <li><a href="">Заключение</a></li>-->
+                </ol>
+            </div>
+            <div class="adds">rtjrtjdtydjtyyjn fjydfyyydfjfyj</div>
+        </section>
+        <footer>
+            <div>
+                <ol>
+                    <li>Навигация</li>
+                    <li><a href="">Главная</a></li>
+                    <li><a href="">Написать статью</a></li>
+                    <li><a href="">Личный кабинет</a></li>
+                </ol>
+                <ol>
+                    <li>Помощь</li>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Поддержка</a></li>
+                    <li><a href="">Обратная связь</a></li>
+                </ol>
+                <ol>
+                    <li>Юридическое</li>
+                    <li><a href="">Условия</a></li>
+                    <li><a href="">Политика</a></li>
+                    <li><a href="">Безопасность</a></li>
+                </ol>
+            </div>
+            <p>© 2024 Konstantin Orlov. All rights reserved</p>
+        </footer>
+
+{% endblock content %}
+
+
+<!--<div style="margin-top: 50px;" class="ui container">-->
+
+<!--    <h1 class="ui center aligned header green">{{ app_name }}</h1>-->
+
+<!--    <form class="ui form" action="{{ url_for('add') }}" method="post">-->
+<!--        <h3 class="test_css">Оптимизируй своё время c Python</h3>-->
+<!--        <div class="field">-->
+<!--            <label>Новая задача</label>-->
+<!--            <input type="text" name="title" placeholder="Введите название задачи"><br>-->
+<!--        </div>-->
+<!--        <button class="ui teal basic button" type="submit">Добавить</button>-->
+<!--    </form>-->
+
+
+<!--    {% for todo in todo_list %}-->
+<!--    <div class="ui segment">-->
+<!--        <p class="ui big header">№{{ todo.id }} {{ todo.title }}</p>-->
+
+<!--        {% if todo.is_complete == False %}-->
+<!--        <span class="ui gray label">Не завершено</span>-->
+<!--        <a class="ui primary basic button" href="{{ url_for('update', todo_id=todo.id) }}">Закрыть</a>-->
+<!--        {% else %}-->
+<!--        <span class="ui green label">Завершено</span>-->
+<!--        <a class="ui blue button" href="{{ url_for('update', todo_id=todo.id) }}">Открыть</a>-->
+<!--        <a class="ui negative basic button" href="{{ url_for('delete', todo_id=todo.id) }}">Удалить</a>-->
+<!--        {% endif %}-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+
+<!--<h3>Введение</h3>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit,  erat suscipit cursus iaculis, nibh lectus luctus nibh, id rhoncus sapien  nisl vitae ex. Vestibulum purus justo, porttitor vitae sollicitudin et,  dictum a libero. In hac habitasse platea dictumst. Interdum et  malesuada fames ac ante ipsum primis in faucibus. Pellentesque felis  tortor, imperdiet sed facilisis in, eleifend id erat. Integer  consectetur consequat erat quis laoreet. Vivamus ultricies, ex vel porta  lacinia, justo enim vulputate dui, sed varius dui odio sit amet urna.  Cras eu est ut felis tincidunt pellentesque. Fusce vitae efficitur  turpis. Suspendisse faucibus tempus dignissim. Phasellus egestas neque  eget lacinia pretium. Donec feugiat ullamcorper ligula, at porta lectus  volutpat sit amet. Nulla facilisi. Nullam ac quam turpis. In suscipit  iaculis egestas. Suspendisse accumsan nisi sit amet vulputate vulputate.-->
+<!--                </p>-->
+<!--                <img class="obtek" src="./image/pig.jpg" alt="">-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit,  erat suscipit cursus iaculis, nibh lectus luctus nibh, id rhoncus sapien  nisl vitae ex. Vestibulum purus justo, porttitor vitae sollicitudin et,  dictum a libero. In hac habitasse platea dictumst. Interdum et  malesuada fames ac ante ipsum primis in faucibus. Pellentesque felis  tortor, </p>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit,  erat suscipit cursus iaculis, nibh lectus luctus nibh, id rhoncus sapien  nisl vitae ex. Vestibulum purus justo, porttitor vitae sollicitudin et,  dictum a libero. In hac habitasse platea dictumst. Interdum et  malesuada fames ac ante ipsum primis in faucibus. Pellentesque felis  tortor, imperdiet sed facilisis in, eleifend id erat. Integer  consectetur consequat erat quis laoreet. Vivamus ultricies, ex vel porta  lacinia, justo enim vulputate dui, sed varius dui odio sit amet urna.  Cras eu est ut felis tincidunt pellentesque. Fusce vitae efficitur  turpis. Suspendisse faucibus tempus dignissim. Phasellus egestas neque  eget lacinia pretium. Donec feugiat ullamcorper ligula, at porta lectus  volutpat sit amet. Nulla facilisi. Nullam ac quam turpis. In suscipit  iaculis egestas. Suspendisse accumsan nisi sit amet vulputate vulputate.-->
+<!--                </p>-->
+<!--                <br>-->
+<!--                <img class="nez" src="./image/mine.jpg" alt="">-->
+<!--                <br>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit,  erat suscipit cursus iaculis, nibh lectus luctus nibh, id rhoncus sapien  nisl vitae ex. Vestibulum purus justo, porttitor vitae sollicitudin et,  dictum a libero. In hac habitasse platea dictumst. Interdum et  malesuada fames ac ante ipsum primis in faucibus. Pellentesque felis  tortor, imperdiet sed facilisis in, eleifend id erat. Integer  consectetur consequat erat quis laoreet. Vivamus ultricies, ex vel porta  lacinia, justo enim vulputate dui, sed varius dui odio sit amet urna.  Cras eu est ut felis tincidunt pellentesque. Fusce vitae efficitur  turpis. Suspendisse faucibus tempus dignissim. Phasellus egestas neque  eget lacinia pretium. Donec feugiat ullamcorper ligula, at porta lectus  volutpat sit amet. Nulla facilisi. Nullam ac quam turpis. In suscipit  iaculis egestas. Suspendisse accumsan nisi sit amet vulputate vulputate.-->
+<!--                </p>
