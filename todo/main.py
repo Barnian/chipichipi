@@ -1,4 +1,4 @@
-from database import User, session_factory, Phone
+from todo.database import User, session_factory, Phone
 
 
 def create_phone_for_user(user_id):
