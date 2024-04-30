@@ -2,7 +2,7 @@ from fastapi import Request, Depends, Form
 from sqlalchemy.orm import Session
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_303_SEE_OTHER, HTTP_302_FOUND
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from todo.config import settings
 # from todo.database.base import get_db
 from todo.app import app, templates
@@ -11,6 +11,9 @@ from todo.app import app, templates
 class Title(BaseModel):
     title: str
 
+class SignUp(BaseModel):
+    email: str
+    psw: str
 
 
 # @app.get('/')
@@ -57,6 +60,24 @@ def home(request: Request):
                                       {'request': request,
                                        })
     pass
+
+@app.get('/auth')
+def home(request: Request):
+    return templates.TemplateResponse('todo/authpage.html',
+                                      {'request': request,
+                                       })
+    pass
+
+@app.post('/authentification')
+def add(sig: SignUp):
+    # new_todo = ToDo(title=title)
+    # db_session.add(new_todo)
+    # db_session.commit()
+    print(sig.email, sig.psw)
+    # url = app.url_path_for('home')
+    # return RedirectResponse(url=url, status_code=HTTP_303_SEE_OTHER)
+
+
 
 @app.post('/add')
 def add(title: Request):

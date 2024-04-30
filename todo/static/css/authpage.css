@@ -1,0 +1,143 @@
+body{
+    background-image: url(../image/auth.png);
+    background-position: center center;
+    background-size:contain;
+    background-color: #252422;
+    background-repeat: no-repeat;
+}
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+h1{
+}
+.auth > input{
+}
+.auth > button{
+    background-color: #0064B1;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+a:active, /* активная/посещенная ссылка */
+a:hover,  /* при наведении */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (min-width: 1024px) {
+    body{
+        height: 100vh;
+    }
+    .auth {
+        margin-left: 17%;
+        width: 20%;
+        padding-top: 23vh;
+        height: 47vh;
+    }
+    h1{
+        font-size: 2vw;
+    }
+    .auth > input{
+        width: 25vw;
+        padding: 1vw;
+        height: 5vw;
+        border-radius: 2vw;
+    }
+    .auth > button{
+        width: 14vw;
+        margin-top: 1vw;
+        padding: 1vw;
+        height: 4vw;
+        border-radius: 2vw;
+    }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    body{
+        height: 100vh;
+    }
+    .auth {
+        margin-left: 18%;
+        width: 25%;
+        padding-top: 20vh;
+        height: 50vw;
+    }
+    h1{
+        font-size: 3vw;
+    }
+    .auth > input{
+        width: 25vw;
+        padding: 1vw;
+        height: 7vw;
+        border-radius: 2vw;
+    }
+    .auth > button{
+        width: 14vw;
+        margin-top: 1vw;
+        /* padding: 0.5vw; */
+        height: 6vw;
+        border-radius: 2vw;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 400px) {
+    body{
+        height: 100vh;
+    }
+    a{
+        font-size: 3vw;
+    }
+    .auth {
+        margin-left: 7%;
+        width: 40%;
+        padding-top: 30vh;
+        height: 50vw;
+    }
+    h1{
+        font-size: 4vh;
+    }
+    .auth > input{
+        width: 30vw;
+        padding: 1vw;
+        height: 8vw;
+        border-radius: 3vw;
+    }
+    .auth > button{
+        width: 20vw;
+        margin-top: 1vw;
+        /* padding: 0.5vw; */
+        height: 7vw;
+        border-radius: 3vw;
+    }
+}
+@media screen and (max-width: 399px){
+    body{
+        height: 100vh;
+        background-position: bottom center;
+    }
+    .auth {
+        margin-left: 20%;
+        width: 60%;
+        padding-top: 30vh;
+        height: 43vh;
+    }
+    h1{
+        font-size: 4vh;
+    }
+    .auth > input{
+        width: 17vh;
+        padding: 1vh;
+        height: 6vh;
+        border-radius: 2vh;
+    }
+    .auth > button{
+        width: 14vh;
+        margin-top: 1vh;
+        /* padding: 0.5vw; */
+        height: 5vh;
+        border-radius: 2vh;
+    }
+}

@@ -1,0 +1,17 @@
+<!-- <!DOCTYPE html> -->
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', path='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='css/authpage.css') }}">
+    </head>
+    <body>
+        <div class="auth">
+            <div><h1>Sign up</h1></div>
+            <input class="inp" type="text" name="" id="" placeholder="email">
+            <input class="inp" type="text" name="" id="" placeholder="password">
+            <button onclick="send()">Sign up</button>
+            <div><a href="">I don't have an account</a></div>
+        </div>
+    </body>
+    <script src="{{ url_for('static', path='js/auth.js') }}"></script>
+</html>
