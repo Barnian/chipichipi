@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import relationship
 
-from base_meta import Base
+from .base_meta import Base
 
 
 class User(Base):
@@ -10,10 +10,10 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     description = Column(String, nullable=False)
     date_of_registration = Column(Date, nullable=False)
-    titles = relationship("UserTitle", back_populates="title")
+    titles = relationship("UserTitle", back_populates="user")
     mail = Column(String, nullable=False)
     psw = Column(String, nullable=False)
-    answers = relationship("UserComment", back_populates="answer")
+    # answers = relationship("UserComment", back_populates="answer")
 
     # id = Column(Integer, primary_key=True, autoincrement=True)
     # full_name = Column(String, nullable=False)
@@ -21,6 +21,5 @@ class User(Base):
     # phones = relationship("Phone", back_populates="user")
     # languages = relationship("UserLanguage", back_populates="user")
     #
-    # def __str__(self):
-    #     return f"User(id={self.id}, full_name='{self.full_name}')"
+    # def __str__(selfr(id={self.id}, full_name='{self.full_name}')"
     #

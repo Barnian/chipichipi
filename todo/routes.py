@@ -1,20 +1,36 @@
-from fastapi import Request, Depends, Form
+# import json
+from fastapi import FastAPI, HTTPException, Depends, status
+from pydantic import BaseModel
+from fastapi.responses import JSONResponse
+from fastapi import Request, Depends, Form, Body, HTTPException
 from sqlalchemy.orm import Session
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_303_SEE_OTHER, HTTP_302_FOUND
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, JsonValue
 from todo.config import settings
+# from .database.base_meta import session_factory
 # from todo.database.base import get_db
 from todo.app import app, templates
+from .database import User, session_factory
 # from todo.models import ToDo
+# from .database.user_title import UserTitle
+# from .database.user import User
+from fastapi.encoders import jsonable_encoder
+# from .database.title import Title
 
-class Title(BaseModel):
-    title: str
+# class Ttle(BaseModel):
+#     title: str
 
+# class Tx(BaseModel):
+#     json
 class SignUp(BaseModel):
     email: str
     psw: str
 
+
+class AuthorText(BaseModel):
+    author: str
+    text: str
 
 # @app.get('/')
 # def home(request: Request, db_session: Session = Depends(get_db)):
@@ -24,6 +40,8 @@ class SignUp(BaseModel):
 #                                        'app_name': settings.app_name,
 #                                        'todo_list': todos}
 #                                       )
+
+
 
 text = """
 
@@ -38,24 +56,39 @@ Vestibulum non purus elit. Nullam rhoncus sit amet velit nec semper. Nulla facil
 Nulla et nulla sit amet tortor congue ullamcorper. Aliquam erat volutpat. Donec vestibulum pharetra varius. Pellentesque sit amet neque vitae sapien tincidunt bibendum ac porttitor sapien. Mauris pharetra feugiat turpis, non scelerisque tellus dictum ac. Nam fermentum ligula sit amet mauris ultricies commodo non nec metus. Phasellus vitae lacus eu orci suscipit maximus id at ante. Vivamus fringilla in augue in venenatis. Ut dictum erat risus, sit amet tempor felis pharetra nec. Duis consequat pulvinar metus pretium varius. """
 
 @app.get('/')
-def home(request: Request):
+async def home(request: Request):
     # todos = db_session.query(ToDo).all()
+    # session = session_factory()
+    # ses = session.query(User).first()
+    # print(ses)
+    # print(ses.mail)
+    # session = session_factory()
+    # print(session.query(User).first())
+    # user = session.query(User).first()
+    # print(user)
+    # session = session_factory()
+    # title = session.query(Title).first()
+    # print(user)
+    # create_phone_for_user(user.id)
+    # print(title.like)
+    # phone_first = user.phones[0]
+    # print(phone_first.user)
+    # session.close()
     chapters = [["https://google.com", "Введение"], ["https://google.com", "китвй"], ["https://google.com", "ноготочки"], ["https://google.com", "ршифин"]]
-    author = "Алина Пермякова"
+    author = "ses.mail"
     author_description = "WebStorm позволяет сэкономить массу времени на часто повторяющихся действиях. Почти для всех таких действий существуют сочетания клавиш. Запомнить все эти сочетания невозможно, но в этом и нет необходимости. Предлагаем вам для начала освоить основные из них, и вы сразу увидите, насколько быстрее и эффективнее вы будете работать."
-
+    # session.close()
     return templates.TemplateResponse('todo/index.html',
                                       {'request': request,
                                        "chapters": chapters,
                                        "author_description": author_description,
                                         'author': author,
                                        "avatar": "../static/image/mine.jpg",
-                                       'text': text}
-
-                                      )
+                                       'text': text})
 
 @app.get('/create_title')
-def home(request: Request):
+async def home(request: Request):
+
     return templates.TemplateResponse('todo/articleredact.html',
                                       {'request': request,
                                        })
@@ -79,16 +112,43 @@ def add(sig: SignUp):
 
 
 
-@app.post('/add')
-def add(title: Request):
-    # new_todo = ToDo(title=title)
-    # db_session.add(new_todo)
-    # db_session.commit()
-    print(str(title))
+# @app.post('/add')
+# async def add(request = Body()):
+#     # new_todo = ToDo(title=title)
+#     # db_session.add(new_todo)
+#     # db_session.commit()
+#
+#     # tr = await request.json()
+#     print(request.author)
+#     # return tr
     # url = app.url_path_for('home')
     # return RedirectResponse(url=url, status_code=HTTP_303_SEE_OTHER)
 
+
+# @app.post("/add")
+# async def add(data: AuthorText = Depends()):
+#     try:
+#         # Access the data sent by the client
+#         author = data.author
+#         text = data.text
 #
+#         # Process the data as needed
+#         print(f"Received data from {author}: {text}")
+#
+#         # Return a success response
+#         return {"message": "Data received successfully"}
+#     except ValueError as ve:
+#         # Handle Pydantic validation errors
+#         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(ve))
+#     except Exception as e:
+#         # Handle other exceptions
+#         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+@app.post("/add")
+async def receive_author_text(data: AuthorText = Depends()):
+    print(data.dict())
+
+
 # @app.get('/update/{todo_id}')
 # def update(todo_id: int, db_session: Session = Depends(get_db)):
 #     todo = db_session.query(ToDo).filter(ToDo.id == todo_id).first()

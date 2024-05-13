@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import relationship
 
-from base_meta import Base
+from .base_meta import Base
 
 
 class Title(Base):
@@ -13,5 +13,5 @@ class Title(Base):
     watched = Column(Integer, nullable=False)
     article_link = Column(String, nullable=False)
     date = Column(Date, nullable=False)
-    users = relationship("UserTitle", back_populates="user")
-    comments = relationship("UserComment", back_populates="comment")
+    users = relationship("UserTitle", back_populates="title")
+    # comments = relationship("UserComment", back_populates="comment")
